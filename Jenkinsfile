@@ -7,6 +7,13 @@ pipeline {
     }
 
     stages {
+        stage('Configure Git Safe Directory') {
+            steps {
+                // Mark the Jenkins workspace as a safe directory for Git
+                sh 'git config --global --add safe.directory "$WORKSPACE"'
+            }
+        }
+
         stage('Echo Version') {
             steps {
                 sh 'echo Print Maven version'
